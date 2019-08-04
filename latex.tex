@@ -1,0 +1,88 @@
+\subsection{latex}
+
+\begin{verbatim}
+latex 添加windows字体
+wget --http-user=jkxjxxz --http-password=swfcxs http://cs2.swfc.edu.cn/pub/resources/tools/msfonts-chinese.tgz
+tar zxf msfonts-chinese.tgz
+mv msfonts-cn /usr/share/fonts/truetype/
+sudo apt-get install xfonts-wqy ttf-wqy-microhei ttf-wqy-zenhei
+fc-cache
+sudo fc-cache -f -s -v
+fc-list
+fc-list ：lang=zh
+--关于问题 The font "[SIMKAI.TTF]" cannot be found.？？？
+sudo gedit /usr/share/texlive/texmf-dist/tex/latex/ctex/fontset/ctex-xecjk-winfonts.def
+fc-list :lang=zh-cn
+来查看系统中的中文字体，记下楷体和仿宋对应的名称，即显示信息中第一个英文
+在我的系统中楷体是 KaiTi，仿宋是 FangSong
+不过会因为安装的字体版本不同而有所差异
+接下来只要将对应的字体修改即可，即
+把[SIMKAI.TTF]修改为KaiTi
+把[SIMFANG.TTF]修改为FangSong
+需要注意不止一处
+
+============================================================== 
+Latex 清除垃圾文件: 
+latexmk -c | latexmk -C
+==============================================================
+texworks 使用
+--shift + tab : 
+i + shift + tab -> \item
+xg + shift + tab -> \gamma
+bth + shift + tab -> \begin{theorem} \end{theorem}
+--Ctrl+B  Balance Delimiters       选中块（被括号包含的内容）
+============================================================== 
+latex 添加windows字体
+============================================================== 
+wget --http-user=jkxjxxz --http-password=swfcxs http://cs2.swfc.edu.cn/pub/resources/tools/msfonts-chinese.tgz
+tar zxf msfonts-chinese.tgz
+mv msfonts-cn /usr/share/fonts/truetype/
+sudo apt-get install xfonts-wqy ttf-wqy-microhei ttf-wqy-zenhei
+fc-cache
+sudo fc-cache -f -s -v
+fc-list
+fc-list ：lang=zh
+--关于问题 The font "[SIMKAI.TTF]" cannot be found.？？？
+sudo gedit /usr/share/texlive/texmf-dist/tex/latex/ctex/fontset/ctex-xecjk-winfonts.def
+fc-list :lang=zh-cn
+来查看系统中的中文字体，记下楷体和仿宋对应的名称，即显示信息中第一个英文
+在我的系统中楷体是 KaiTi，仿宋是 FangSong
+不过会因为安装的字体版本不同而有所差异
+接下来只要将对应的字体修改即可，即
+把[SIMKAI.TTF]修改为KaiTi
+把[SIMFANG.TTF]修改为FangSong
+需要注意不止一处
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+============================================================== 
+Package minted Error: You must have `pygmentize' installed to use this package. 
+============================================================== 
+在编译时加上参数 --shell-escape
+$xelatex --shell-escape xxx.tex
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+============================================================== 
+命令行 查看包帮助命令 texdoc
+============================================================== 
+$texdoc graphicx   %查看 graphicx 包的帮助
+$texdoc lshort      % 查看 not short latex
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+============================================================== 
+Ubuntu/Mint下LaTeX宏包安装及更新
+============================================================== 
+1. 首先要找到默认宏包所在目录，这个Google可以查到，我的系统里有两个
+
+/usr/share/texmf/tex/latex 
+/usr/share/texmf-texlive/tex/latex 
+
+2. 如果是安装一个新的宏包，就直接把宏包的压缩文件扔进第一个目录下，直接解压就行，注意解压后的文件里可能有安装说明，照着安装说明做就是了
+。如果是更新一个宏包，一般都可以在第二个目录下找到，把原先的宏包重命名成*-backup，再解压新下载的宏包压缩文件，同时如果有安装说明的话，也照着做。 
+
+3. 之后要对宏包重新标记下，终端下执行
+# texhash 
+4. Log off / Log in后，就完成了
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+============================================================== 
+安装texlive 2016 找不到 tlmgr 命令
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+sudo env PATH="$PATH" tlmgr
+============================================================== 
+\end{verbatim}
